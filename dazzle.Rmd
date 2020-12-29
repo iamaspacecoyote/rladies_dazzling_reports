@@ -1,0 +1,73 @@
+---
+title: "Dazzling HTML Reports with R"
+author: "Lindsey Dietz, PhD"
+date: "12/27/2020"
+output: 
+  html_document:
+    code_folding: hide
+params:
+  state: Nebraska
+  year: 2019
+  midwest: true
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# {.tabset .tabset-pills}
+
+## The Info
+
+https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html
+
+Packages I'm going to use
+
+```{r, warning=FALSE, message=FALSE, class.source = 'fold-show'}
+library(rmarkdown)
+library(DT)
+library(ggplot2)
+library(plotly)
+
+```
+
+
+```{r}
+library(blscrapeR)
+library(tidyverse)
+df <- bls_api(c("CES2000000001", "CES7000000001","CES5500000001","CES6500000001"),
+                startyear = 2000, endyear = 2020)  %>%
+    dateCast() %>%
+  select(date, seriesID, value) %>%
+  mutate(seriesID = case_when(seriesID == "CES2000000001" ~ "Construction",
+                              seriesID == "CES7000000001" ~ "Hospitality",
+                              seriesID == "CES5500000001" ~ "Financial",
+                              seriesID == "CES6500000001" ~ "Educ./Health Services"))
+
+```
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Interactive Table
+
+```{r cars, echo=FALSE}
+DT::datatable(df)
+```
+
+## Interactive Plot
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+myplot <- ggplot(df, aes(x = date, y = value, group = seriesID)) + 
+  geom_line() +
+  theme_bw()
+
+ggplotly(myplot)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Dropdown in a tab
