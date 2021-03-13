@@ -1,0 +1,70 @@
+---
+title: "Dazzling Reports"
+author: "Lindsey Dietz, PhD"
+date: "R-Ladies Twin Cities (March 18, 2021)"
+output:
+  revealjs::revealjs_presentation:
+    theme: black
+    highlight: monochrome
+    transition: fade
+
+---
+
+## Goal of this talk
+
+Introduce tools that help you tell a data story in a professional, sustainable, and beautiful way
+
+## Older process
+
+- Do analysis in one tool (R)
+- Make tables and charts in another tool (Excel)
+- Paste everything into a text editor (Word)
+- Turn it into a final product (PDF)
+
+It works, but doesn't set you up for next time.
+
+## Sustainable process
+
+Build an R ecosystem for everything
+
+- `rmarkdown` is the wrapper
+- Table building using `DT` or `reactable` (or others)
+- Plotting using `ggplot2` or `plotly`
+
+## R Markdown
+
+Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+- Header
+- Code chunks
+- Markdown/LaTeX
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Code and Output
+
+```{r}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+<style type="text/css">
+  .reveal p {
+    text-align: left;
+  }
+  .reveal ul {
+    display: block;
+  }
+  .reveal ol {
+    display: block;
+  }  
+</style>
