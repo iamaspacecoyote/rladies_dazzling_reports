@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Lindsey Dietz, PhD" />
-  <title>Dazzling Reports</title>
+  <title>Dazzling HTML Reports</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -455,7 +455,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
     <div class="slides">
 
 <section>
-    <h1 class="title">Dazzling Reports</h1>
+    <h1 class="title">Dazzling HTML Reports</h1>
     <h2 class="author">Lindsey Dietz, PhD</h2>
     <h3 class="date">R-Ladies Twin Cities (March 18, 2021)</h3>
 </section>
@@ -474,23 +474,42 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </ul>
 <p>It works, but doesn’t set you up for next time.</p>
 </section>
-<section id="sustainable-process" class="slide level2">
-<h2>Sustainable process</h2>
-<p>Build an R ecosystem for everything</p>
+<section id="building-an-r-ecosystem-for-everything" class="slide level2">
+<h2>Building an R ecosystem for everything</h2>
 <ul>
-<li><code>rmarkdown</code> is the wrapper</li>
+<li>R project is the forest</li>
+<li>R markdown is the tree</li>
+<li>Tables and plots are the animals in the tree
+<ul>
 <li>Table building using <code>DT</code> or <code>reactable</code> (or others)</li>
 <li>Plotting using <code>ggplot2</code> or <code>plotly</code></li>
+</ul></li>
 </ul>
+</section>
+<section id="r-project" class="slide level2">
+<h2>R Project</h2>
+<p>R projects define your working directories. This helps keeps paths relative rather than fixed. This makes the work portable and lets you introduce folders to keep things tidy.</p>
 </section>
 <section id="r-markdown" class="slide level2">
 <h2>R Markdown</h2>
 <p>Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
 <ul>
-<li>Header</li>
+<li>YAML Header</li>
 <li>Code chunks</li>
 <li>Markdown/LaTeX</li>
 </ul>
+</section>
+<section id="tables" class="slide level2">
+<h2>Tables</h2>
+<p>There are many table packages. I chose a couple that are good for HTML reports</p>
+<ul>
+<li><code>DT</code> - lighter weight starting point</li>
+<li><code>reactable</code> - more advanced customization</li>
+</ul>
+</section>
+<section id="plots" class="slide level2">
+<h2>Plots</h2>
+<p><code>ggplot2</code> works great on it’s own. It can be enhanced by adding <code>plotly</code>.</p>
 <style type="text/css">
   .reveal p {
     text-align: left;

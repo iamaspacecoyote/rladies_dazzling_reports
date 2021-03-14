@@ -8,6 +8,7 @@ output:
 params:
   month: '03'
   year: '2021'
+  plot: 'interactive'
 
 ---
 <!-- (stuff above this line is YAML and behaves differently than the rest of the doc) -->
@@ -18,11 +19,12 @@ params:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-<!-- (using parameters in Rmarkdown) -->
-This is my monthly report for ``r paste(params$month, params$year, sep = "-")``. 
+<!-- (using parameters in Rmarkdown; don't forget the r) -->
+This is my monthly report for `r paste(params$month, params$year, sep = "-")`. 
+
 
 <!-- (making tabs) -->
-<!-- # header 1, all tabs need ## header 2 to be nested -->
+<!-- # header 1, all tabs need to be ## header 2 to nest -->
 
 # {.tabset .tabset-pills}
 
@@ -68,14 +70,29 @@ df <- fred_function(start_date = "2002-03-01", end_date = "2021-03-01")
 
 ### with DT
 
+The R package `DT` provides an R interface to the JavaScript library DataTables. R data objects (matrices or data frames) can be displayed as tables on HTML pages, and DataTables provides filtering, pagination, sorting, and many other features in the tables.
+
+https://rstudio.github.io/DT/
+
 ```{r cars, echo=FALSE}
 DT::datatable(df, filter = 'top', extensions = 'Buttons', 
-              options = list(
-    dom = 'Bfrtip',
-    buttons = c('copy', 'csv', 'excel')))
+              options = list(dom = 'Bfrtip', buttons = c('copy', 'csv', 'excel')))
 ```
 
 ### with reactable
+
+Interactive data tables for R, based on the React Table library and made with `reactR`.
+
+ - Features
+ - Sorting, filtering, pagination
+ - Grouping and aggregation
+ - Built-in column formatting
+ - Custom rendering via R or JavaScript — use Shiny HTML tags and HTML widgets in tables
+ - Expandable rows and nested tables
+ - Conditional styling
+ - Works seamlessly within R Markdown documents and Shiny apps
+
+https://glin.github.io/reactable/index.html
 
 ```{r data, echo=FALSE}
 
@@ -95,14 +112,23 @@ reactable::reactable(df, filterable = TRUE, groupBy = "Category",
 
 ```
 
-## Interactive Plot
+## Interactive or Fixed Plot
 
-```{r ur, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+```{r plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+
 myplot <- ggplot(df, aes(x = Date, y = UR, color = Category)) + 
   geom_line() +
   theme_bw() + ylab("Unemployment Rate")
 
-ggplotly(myplot)
+if(params$plot == 'fixed'){
+  #Fixed ggplot
+  myplot
+}else{
+  #Dynamic plot with plotly 
+  ggplotly(myplot)
+  
+}
+
 ```
 
 <!-- (Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.) -->
