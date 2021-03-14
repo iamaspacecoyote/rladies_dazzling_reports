@@ -72,9 +72,7 @@ df <- fred_function(start_date = "2002-03-01", end_date = "2021-03-01")
 
 ### with DT
 
-The R package `DT` provides an R interface to the JavaScript library DataTables. R data objects (matrices or data frames) can be displayed as tables on HTML pages, and DataTables provides filtering, pagination, sorting, and many other features in the tables.
-
-https://rstudio.github.io/DT/
+[The R package `DT` provides an R interface to the JavaScript library DataTables](https://rstudio.github.io/DT/). R data objects (matrices or data frames) can be displayed as tables on HTML pages, and DataTables provides filtering, pagination, sorting, and many other features in the tables.
 
 ```{r cars, echo=FALSE}
 DT::datatable(df, filter = 'top', extensions = 'Buttons', 
@@ -83,7 +81,7 @@ DT::datatable(df, filter = 'top', extensions = 'Buttons',
 
 ### with reactable
 
-Interactive data tables for R, based on the React Table library and made with `reactR`.
+[Interactive data tables for R, based on the React Table library and made with `reactR`.](https://glin.github.io/reactable/index.html)
 
  - Features
  - Sorting, filtering, pagination
@@ -93,8 +91,6 @@ Interactive data tables for R, based on the React Table library and made with `r
  - Expandable rows and nested tables
  - Conditional styling
  - Works seamlessly within R Markdown documents and Shiny apps
-
-https://glin.github.io/reactable/index.html
 
 ```{r data, echo=FALSE}
 
