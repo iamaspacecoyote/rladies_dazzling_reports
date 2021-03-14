@@ -1,0 +1,108 @@
+---
+title: "My Dazzling Report"
+author: "Lindsey Dietz, PhD"
+date: "2021-03-18"
+output: 
+  html_document:
+    code_folding: hide
+params:
+  month: '03'
+  year: '2021'
+
+---
+<!-- (stuff above this line is YAML and behaves differently than the rest of the doc) -->
+
+
+<!-- (this just shows up when you create Rmarkdown) -->
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- (using parameters in Rmarkdown) -->
+This is my monthly report for ``r paste(params$month, params$year, sep = "-")``. 
+
+<!-- (making tabs) -->
+<!-- # header 1, all tabs need ## header 2 to be nested -->
+
+# {.tabset .tabset-pills}
+
+## Some Info
+
+<!-- (** makes it bold) -->
+**This is really important information that people should read before looking at my output.**
+
+References:
+
+<!-- (one type of link) -->
+ - Tabs: https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html
+ - [Using Rmarkdown in your development process](https://rstudio.com/resources/rstudioconf-2020/rmarkdown-driven-development/)
+
+<!-- (another type of link) -->
+These are the R packages I'm going to highlight:
+
+<!-- (here is an R code chunk; I've used some options to hide things) -->
+```{r, warning=FALSE, results = 'hide', message = FALSE}
+#The report
+library(rmarkdown)
+
+#Tables
+library(DT)
+library(reactable)
+
+#Plots
+library(ggplot2)
+library(plotly)
+
+```
+
+I'm going to get some unemployment data from FRED to demo.
+
+```{r, results = 'hide', message = FALSE}
+source("../scripts/fred_script.R")
+df <- fred_function(start_date = "2002-03-01", end_date = "2021-03-01")
+
+```
+
+## Interactive Tables {.tabset .tabset-pills}
+<!-- ## Interactive Tables {.tabset .tabset-dropdown} -->
+
+### with DT
+
+```{r cars, echo=FALSE}
+DT::datatable(df, filter = 'top', extensions = 'Buttons', 
+              options = list(
+    dom = 'Bfrtip',
+    buttons = c('copy', 'csv', 'excel')))
+```
+
+### with reactable
+
+```{r data, echo=FALSE}
+
+orange_pal <- function(x) rgb(colorRamp(c('#FFFFFF', "#ffb54d", "#B22222"))(x), maxColorValue = 255)
+
+reactable::reactable(df, filterable = TRUE, groupBy = "Category", 
+  columns = list(
+    UR = colDef(
+      style = function(UR) {
+        normalized <- (UR - min(df$UR)) / (max(df$UR) - min(df$UR))
+        color <- orange_pal(normalized)
+        list(background = color)
+      }
+    )
+  )
+)
+
+```
+
+## Interactive Plot
+
+```{r ur, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+myplot <- ggplot(df, aes(x = Date, y = UR, color = Category)) + 
+  geom_line() +
+  theme_bw() + ylab("Unemployment Rate")
+
+ggplotly(myplot)
+```
+
+<!-- (Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.) -->
