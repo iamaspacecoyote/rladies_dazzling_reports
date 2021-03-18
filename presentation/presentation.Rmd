@@ -10,9 +10,15 @@ output:
 
 ---
 
+## Disclaimer
+
+The views expressed in this presentation are strictly my own. They do not necessarily represent the position of the Federal Reserve Bank of Minneapolis or the Federal Reserve System.
+
 ## Goal of this talk
 
 Introduce tools that help you tell a data story in a professional, sustainable, and beautiful way
+
+## {data-background="abed.jpg"}
 
 ## Older process
 
@@ -23,17 +29,21 @@ Introduce tools that help you tell a data story in a professional, sustainable, 
 
 It works, but doesn't set you up for next time.
 
-## Building an R ecosystem for everything
+## {data-background-video="reddit.mp4"}
+
+## Build an R ecosystem for everything
 
 - R project is the forest
 - R markdown is the tree
-- Tables and plots are the animals in the tree
+- Tables and plots are the animals
     + Table building using `DT` or `reactable` (or others)
     + Plotting using `ggplot2` or `plotly`
 
-## R Project
+## R Project 
 
 R projects define your working directories. This helps keeps paths relative rather than fixed. This makes the work portable and lets you introduce folders to keep things tidy. 
+
+![JB](jb.png)
 
 ## R Markdown
 
@@ -45,7 +55,7 @@ Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word docu
 
 ## Tables
 
-There are many table packages. I chose a couple that are good for HTML reports
+There are many table packages. I chose a couple that are good for HTML reports.
 
 - `DT` - lighter weight starting point
 - `reactable` - more advanced customization
@@ -53,6 +63,13 @@ There are many table packages. I chose a couple that are good for HTML reports
 ## Plots
 
 `ggplot2` works great on it's own. It can be enhanced by adding `plotly`.
+
+## Tips
+
+ - Keep longer R scripts separate from R markdown file
+   + Consider outputting summary data set to avoid longer processes when you load a report
+ - Use parameters in your R markdown file to make it more timeless
+ - Don't try to fit too much into one report - store different reports in the same folder if it makes sense
 
 
 <style type="text/css">

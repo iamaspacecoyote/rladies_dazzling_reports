@@ -40,7 +40,7 @@ fred_function <- function(start_date, end_date){
                                 (Date >= '2001-03-01' & Date < '2001-12-01'), TRUE, FALSE),
            quarter_start = ifelse(substr(Date, 6, 7) %in% c('01','04','07','10'), TRUE, FALSE))
   
-  write.csv(df, paste0("../data/fred_out_",end_date, ".csv"), row.names = FALSE)
+  write.csv(df, paste0("../data/fred_out_", end_date, ".csv"), row.names = FALSE)
   return(df)
   
 }

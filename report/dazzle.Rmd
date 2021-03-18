@@ -10,7 +10,7 @@ output:
 params:
   month: '03'
   year: '2021'
-  plot_type: 'interactive'
+  plot_type: 'fixed'
 
 ---
 <!-- (stuff above this line is YAML and behaves differently than the rest of the doc) -->
@@ -35,6 +35,8 @@ This is my monthly report for `r paste(params$month, params$year, sep = "-")`.
 <!-- (** makes it bold) -->
 **This is really important information that people should read before looking at my output.**
 
+Here is formula in LaTeX: $y = \alpha + \beta x$.
+
 References:
 
 <!-- (one type of link) -->
@@ -45,7 +47,7 @@ References:
 These are the R packages I'm going to highlight:
 
 <!-- (here is an R code chunk; I've used some options to hide things) -->
-```{r, warning=FALSE, results = 'hide', message = FALSE}
+```{r libraries, warning = FALSE, results = 'hide', message = FALSE}
 #The report
 library(rmarkdown)
 
@@ -74,7 +76,7 @@ df <- fred_function(start_date = "2002-03-01", end_date = "2021-03-01")
 
 [The R package `DT` provides an R interface to the JavaScript library DataTables](https://rstudio.github.io/DT/). R data objects (matrices or data frames) can be displayed as tables on HTML pages, and DataTables provides filtering, pagination, sorting, and many other features in the tables.
 
-```{r cars, echo=FALSE}
+```{r fred_table, echo=FALSE}
 DT::datatable(df, filter = 'top', extensions = 'Buttons', 
               options = list(dom = 'Bfrtip', buttons = c('copy', 'csv', 'excel')))
 ```
@@ -112,6 +114,7 @@ reactable::reactable(df, filterable = TRUE, groupBy = "Category",
 
 ## Interactive or Fixed Plot
 
+<!-- (Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.) -->
 ```{r plot, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
 
 myplot <- ggplot(df, aes(x = Date, y = UR, color = Category)) + 
@@ -121,6 +124,7 @@ myplot <- ggplot(df, aes(x = Date, y = UR, color = Category)) +
 if(params$plot_type == 'fixed'){
   #Fixed ggplot
   myplot
+  
 }else{
   #Dynamic plot with plotly 
   ggplotly(myplot)
@@ -128,5 +132,3 @@ if(params$plot_type == 'fixed'){
 }
 
 ```
-
-<!-- (Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.) -->
