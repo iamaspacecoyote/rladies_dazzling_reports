@@ -457,22 +457,48 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section>
     <h1 class="title">Dazzling HTML Reports</h1>
     <h2 class="author">Lindsey Dietz, PhD</h2>
-    <h3 class="date">R-Ladies Twin Cities (March 18, 2021)</h3>
+    <h3 class="date">noRth (September 29, 2021)</h3>
 </section>
 
 <section id="disclaimer" class="slide level2">
 <h2>Disclaimer</h2>
 <p>The views expressed in this presentation are strictly my own. They do not necessarily represent the position of the Federal Reserve Bank of Minneapolis or the Federal Reserve System.</p>
 </section>
-<section id="goal-of-this-talk" class="slide level2">
-<h2>Goal of this talk</h2>
-<p>Introduce tools that help you tell a data story in a professional, sustainable, and beautiful way</p>
+<section id="goals-of-this-tutorial" class="slide level2">
+<h2>Goals of this tutorial</h2>
+<p>Introduce R tools that help you tell a data story in a professional, sustainable, and beautiful way.</p>
+<p>Specifically,</p>
+<ul>
+<li>Set up your R ecosystem to support report creation</li>
+<li>Explore table and graphics packages to support analysis</li>
+<li>Produce an HTML report</li>
+<li>Produce a PDF report</li>
+</ul>
+</section>
+<section id="stuff-i-wont-cover" class="slide level2">
+<h2>Stuff I won’t cover</h2>
+<ul>
+<li>Shiny - we are going to focus on HTML (primary) and PDF (secondary) reports</li>
+<li>Details of the table making or graphics packages - these could easily be their own tutorials</li>
+</ul>
+<p>The good news is several speakers tomorrow will cover Shiny and other graphics applications!</p>
 </section>
 <section id="section" class="slide level2" data-background="abed.jpg">
 <h2 data-background="abed.jpg"></h2>
+<p>This tutorial might feel a little bit ‘meta’ or abstract.</p>
 </section>
-<section id="older-process" class="slide level2">
-<h2>Older process</h2>
+<section id="digression-on-ux-principles-for-reporting-and-almost-anything-else" class="slide level2">
+<h2>Digression on UX principles for reporting (and almost anything else)</h2>
+<ul>
+<li>Meet the users’ needs</li>
+<li>Have a clear hierarchy - navigation should be natural</li>
+<li>Understand accessibility - did you know 1 in 12 men are colorblind?</li>
+<li>Keep it consistent - transition to or away from ideas slowly</li>
+<li>Narrative design - tell a story with your design</li>
+</ul>
+</section>
+<section id="older-process-of-reporting" class="slide level2">
+<h2>Older process of reporting</h2>
 <ul>
 <li>Do analysis in one tool (R)</li>
 <li>Make tables and charts in another tool (Excel)</li>
@@ -484,8 +510,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="section-1" class="slide level2" data-background-video="reddit.mp4">
 <h2 data-background-video="reddit.mp4"></h2>
 </section>
-<section id="build-an-r-ecosystem-for-everything" class="slide level2">
-<h2>Build an R ecosystem for everything</h2>
+<section id="build-an-r-ecosystem" class="slide level2">
+<h2>Build an R ecosystem</h2>
 <ul>
 <li>R project is the forest</li>
 <li>R markdown is the tree</li>

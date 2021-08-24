@@ -1,7 +1,7 @@
 ---
 title: "Dazzling HTML Reports"
 author: "Lindsey Dietz, PhD"
-date: "R-Ladies Twin Cities (March 18, 2021)"
+date: "noRth (September 29, 2021)"
 output:
   revealjs::revealjs_presentation:
     theme: black
@@ -14,13 +14,36 @@ output:
 
 The views expressed in this presentation are strictly my own. They do not necessarily represent the position of the Federal Reserve Bank of Minneapolis or the Federal Reserve System.
 
-## Goal of this talk
+## Goals of this tutorial
 
-Introduce tools that help you tell a data story in a professional, sustainable, and beautiful way
+Introduce R tools that help you tell a data story in a professional, sustainable, and beautiful way. 
+
+Specifically, 
+
+- Set up your R ecosystem to support report creation
+- Explore table and graphics packages to support analysis
+- Produce an HTML report
+- Produce a PDF report
+
+## Stuff I won't cover
+
+- Shiny - we are going to focus on HTML (primary) and PDF (secondary) reports
+- Details of the table making or graphics packages - these could easily be their own tutorials
+
+The good news is several speakers tomorrow will cover Shiny and other graphics applications!
 
 ## {data-background="abed.jpg"}
+This tutorial might feel a little bit 'meta' or abstract. 
 
-## Older process
+## Digression on UX principles for reporting (and almost anything else)
+
+ - Meet the users’ needs 
+ - Have a clear hierarchy - navigation should be natural
+ - Understand accessibility - did you know 1 in 12 men are colorblind?
+ - Keep it consistent - transition to or away from ideas slowly
+ - Narrative design - tell a story with your design
+ 
+## Older process of reporting
 
 - Do analysis in one tool (R)
 - Make tables and charts in another tool (Excel)
@@ -31,7 +54,7 @@ It works, but doesn't set you up for next time.
 
 ## {data-background-video="reddit.mp4"}
 
-## Build an R ecosystem for everything
+## Build an R ecosystem
 
 - R project is the forest
 - R markdown is the tree
@@ -70,7 +93,6 @@ There are many table packages. I chose a couple that are good for HTML reports.
    + Consider outputting summary data set to avoid longer processes when you load a report
  - Use parameters in your R markdown file to make it more timeless
  - Don't try to fit too much into one report - store different reports in the same folder if it makes sense
-
 
 <style type="text/css">
   .reveal p {

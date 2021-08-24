@@ -52,6 +52,7 @@ These are the R packages I'm going to highlight:
 library(rmarkdown)
 
 #Tables
+library(flextable)
 library(DT)
 library(reactable)
 
@@ -59,6 +60,7 @@ library(reactable)
 library(ggplot2)
 library(plotly)
 
+library(dplyr)
 ```
 
 I'm going to get some unemployment data from FRED to demo.
